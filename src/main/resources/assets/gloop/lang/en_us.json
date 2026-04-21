@@ -1,0 +1,14 @@
+{
+  "itemGroup.gloop": "Example Mod Tab",
+  "block.gloop.example_block": "Example Block",
+  "item.gloop.example_item": "Example Item",
+
+  "gloop.configuration.title": "Gloop Configs",
+  "gloop.configuration.section.gloop.common.toml": "Gloop Configs",
+  "gloop.configuration.section.gloop.common.toml.title": "Gloop Configs",
+  "gloop.configuration.items": "Item List",
+  "gloop.configuration.logDirtBlock": "Log Dirt Block",
+  "gloop.configuration.magicNumberIntroduction": "Magic Number Text",
+  "gloop.configuration.magicNumber": "Magic Number",
+  "item.gloop.magic_mirror": "Magic Mirror"
+}
