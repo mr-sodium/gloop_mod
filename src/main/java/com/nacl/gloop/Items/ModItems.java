@@ -13,6 +13,9 @@ public class ModItems {
     public static final DeferredItem<Item> Magic_mirror = ITEMS.register("magic_mirror",
             () -> new MagicMirrorItemClass(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+//    public static final DeferredItem<Item> itemid = ITEMS.register("itemid",
+//            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
