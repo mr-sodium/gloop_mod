@@ -1,1 +1,2 @@
 cc-by-sa-4.0 international 
+can be used on modrinth or curseforge
