@@ -1,8 +1,5 @@
 {
   "itemGroup.gloop": "Example Mod Tab",
-  "block.gloop.example_block": "Example Block",
-  "item.gloop.example_item": "Example Item",
-
   "gloop.configuration.title": "Gloop Configs",
   "gloop.configuration.section.gloop.common.toml": "Gloop Configs",
   "gloop.configuration.section.gloop.common.toml.title": "Gloop Configs",
@@ -10,5 +7,19 @@
   "gloop.configuration.logDirtBlock": "Log Dirt Block",
   "gloop.configuration.magicNumberIntroduction": "Magic Number Text",
   "gloop.configuration.magicNumber": "Magic Number",
-  "item.gloop.magic_mirror": "Magic Mirror"
+
+  "item.gloop.magic_mirror": "Magic Mirror",
+
+  "item.gloop.wooden_scythe":  "Wooden Scythe",
+  "item.gloop.stone_scythe":  "Stone Scythe",
+  "item.gloop.iron_scythe":  "Iron Scythe",
+  "item.gloop.golden_scythe":  "Golden scythe",
+  "item.gloop.diamond_scythe":  "Diamond Scythe",
+  "item.gloop.netherite_scythe":  "Netherite Scythe",
+
+
+
+  "enchantment.gloop.acceleration":"Acceleration",
+  "enchantment.gloop.acceleration.desc": "When a tool with this enchantment mines the same block as the last block mined it accelerates"
+
 }

@@ -1,0 +1,7 @@
+{
+  "credits": "@domthebomb8567 on discord",
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "gloop:item/netherite_scythe"
+  }
+}
