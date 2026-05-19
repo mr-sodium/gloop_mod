@@ -12,7 +12,6 @@ public class ModItems {
 
     public static final DeferredItem<Item> Magic_mirror = ITEMS.register("magic_mirror",
             () -> new MagicMirrorItemClass(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(4)));
-
     public static final DeferredItem<Item> wooden_scythe = ITEMS.register("wooden_scythe",
             () -> new ScytheItemClass(new Item.Properties().stacksTo(1).durability(59)));
     public static final DeferredItem<Item> stone_scythe = ITEMS.register("stone_scythe",

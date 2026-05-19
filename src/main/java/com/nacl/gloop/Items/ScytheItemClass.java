@@ -3,18 +3,22 @@ package com.nacl.gloop.Items;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
+
+import static net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE;
 
 public class ScytheItemClass extends Item {
 
@@ -29,25 +33,53 @@ public class ScytheItemClass extends Item {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!attacker.getCommandSenderWorld().isClientSide()) {
+
+
+
             double attackerX = attacker.getX();
-            double attackerY = attacker.getY();
             double attackerZ = attacker.getZ();
 
             double targetX = target.getX();
-            double targetY = target.getY();
             double targetZ = target.getZ();
 
             double currentMovementX = target.getDeltaMovement().x;
             double currentMovementY = target.getDeltaMovement().y;
             double currentMovementZ = target.getDeltaMovement().z;
 
-            target.setDeltaMovement(
-                    (currentMovementX + ((targetX - attackerX) * -0.4)),
-                    (currentMovementY + 0.09),
-                    (currentMovementZ + ((targetZ - attackerZ) * -0.4))
-            );
+            attacker.sendSystemMessage(Component.literal("Variable value: " + target.getType().is(Tags.EntityTypes.BOSSES)));
+
+            if(target.getAttributeValue(KNOCKBACK_RESISTANCE) != 1 && !(target.getType().is(Tags.EntityTypes.BOSSES))) {
+                target.setDeltaMovement(
+                        (currentMovementX + ((targetX - attackerX) * -0.4)),
+                        (currentMovementY + 0.09),
+                        (currentMovementZ + ((targetZ - attackerZ) * -0.4))
+                );
+            }
             target.hurtMarked = true;
-            stack.hurtAndBreak(1, attacker, stack.getEquipmentSlot());
+
+            double range = 2.0D;
+            AABB sweepingBox = target.getBoundingBox().inflate(range, 0.5D, range);
+            List<LivingEntity> nearbyEntities = attacker.getCommandSenderWorld().getEntitiesOfClass(LivingEntity.class, sweepingBox);
+
+            float damage = (float) (getScytheDamageModifier(stack) + 1.0D);
+            float sweepDamage = damage * 0.5f; // Sweeping targets take 50% of base damage
+
+            for (LivingEntity entity : nearbyEntities) {
+                if (entity != attacker && entity != target && !attacker.isAlliedTo(entity)) {
+
+                    entity.knockback(-0.4F,
+                            Math.sin(attacker.getYRot() * (Math.PI / 180F)),
+                            -Math.cos(attacker.getYRot() * (Math.PI / 180F))
+                    );
+
+                    entity.hurt(attacker.damageSources().playerAttack((net.minecraft.world.entity.player.Player) attacker), sweepDamage);
+                }
+            }
+
+            // --- Handle Weapon Durability ---
+            if (attacker instanceof ServerPlayer serverPlayer) {
+                stack.hurtAndBreak(1, serverPlayer, net.minecraft.world.entity.EquipmentSlot.MAINHAND);
+            }
         }
         return super.hurtEnemy(stack, target, attacker);
     }
@@ -91,15 +123,11 @@ public class ScytheItemClass extends Item {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
-    /**
-     * Helper method to determine the base attack damage modifier depending on the item variant.
-     * Compares the stack's Item instance directly against your registered items.
-     */
     private double getScytheDamageModifier(ItemStack stack) {
         Item item = stack.getItem();
 
         if (item == ModItems.wooden_scythe.get()) {
-            return 2.0D; //total damage of sword alternitive - 2
+            return 2.0D;
         } else if (item == ModItems.stone_scythe.get()) {
             return 3.0D;
         } else if (item == ModItems.iron_scythe.get()) {
@@ -112,6 +140,7 @@ public class ScytheItemClass extends Item {
             return 6.0D;
         }
 
-        return 0.0D; // Default fallback if item variant doesn't match
+        return 0.0D;
     }
+//    public void BlockBreak(Player player,)
 }
