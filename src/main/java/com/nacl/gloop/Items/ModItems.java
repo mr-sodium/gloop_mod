@@ -1,6 +1,7 @@
 package com.nacl.gloop.Items;
 
 import com.nacl.gloop.Gloop;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;

@@ -1,12 +1,15 @@
 package com.nacl.gloop.enchantment;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 
@@ -17,10 +20,38 @@ import java.util.UUID;
 @EventBusSubscriber(modid = "gloop")
 public class ModEnchantmentEvents {
 
+    @SubscribeEvent
+    public static void onEntityHit(LivingIncomingDamageEvent event) {
+        if (!(event.getSource().getEntity() instanceof Player player)) return;
+        if (player.level().isClientSide()) return;
+
+        ItemStack tool = player.getMainHandItem();
+
+        int level = tool.getEnchantmentLevel(player.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(ModEnchantments.BACKSTAB));
+        if (level > 0) {
+            float originalDamage = event.getAmount();
+            if(player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())){
+                event.setAmount(originalDamage * 0.1F);
+                return;
+            }
+            double playerYaw = player.getYRot();
+            double targetYaw = event.getEntity().getYRot();
+
+            playerYaw = (playerYaw % 360 + 360) % 360;
+            targetYaw = (targetYaw % 360 + 360) % 360;
+
+            double diff = Math.abs(targetYaw - playerYaw);
+            double shortestDist = Math.min(diff, 360 - diff);
+
+            if (shortestDist <= 60) {
+                player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 400);
+                event.setAmount(originalDamage * 3.0F);
+            }
+        }
+    }
+    //this is where the uhhhhh acceleration goes
     private static final Map<UUID, ResourceLocation> LAST_MINED_BLOCK = new HashMap<>();
     private static final Map<UUID, Integer> MINING_COMBO = new HashMap<>();
-    //private static final int MAX_COMBO = 50;
-
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();

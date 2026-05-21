@@ -1,5 +1,6 @@
 package com.nacl.gloop.Items;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -13,7 +14,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
@@ -31,6 +36,22 @@ public class ScytheItemClass extends Item {
     }
 
     @Override
+    public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        if (itemAbility == ItemAbilities.SWORD_SWEEP) {
+            return true;
+        }
+        return super.canPerformAction(stack, itemAbility);
+    }
+    @Override
+    public int getEnchantmentLevel(ItemStack stack, Holder<Enchantment> enchantment) {
+        int vanillaLevel = super.getEnchantmentLevel(stack, enchantment);
+        if (enchantment.is(Enchantments.SWEEPING_EDGE)) {
+            return vanillaLevel + 1;
+        }
+
+        return vanillaLevel;
+    }
+    @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!attacker.getCommandSenderWorld().isClientSide()) {
 
@@ -45,38 +66,18 @@ public class ScytheItemClass extends Item {
             double currentMovementX = target.getDeltaMovement().x;
             double currentMovementY = target.getDeltaMovement().y;
             double currentMovementZ = target.getDeltaMovement().z;
+            double knockbackstat = target.getAttributeValue(KNOCKBACK_RESISTANCE) - 1;
 
-            attacker.sendSystemMessage(Component.literal("Variable value: " + target.getType().is(Tags.EntityTypes.BOSSES)));
-
-            if(target.getAttributeValue(KNOCKBACK_RESISTANCE) != 1 && !(target.getType().is(Tags.EntityTypes.BOSSES))) {
+//            attacker.sendSystemMessage(Component.literal("Variable value: " + knockbackstat ));
+            if(!(target.getAttributeValue(KNOCKBACK_RESISTANCE) > 1) && !(target.getType().is(Tags.EntityTypes.BOSSES))) {
                 target.setDeltaMovement(
-                        (currentMovementX + ((targetX - attackerX) * -0.4)),
-                        (currentMovementY + 0.09),
-                        (currentMovementZ + ((targetZ - attackerZ) * -0.4))
+                        (currentMovementX+(((targetX-attackerX) * 0.4)*knockbackstat)),
+                        (currentMovementY+0.09),
+                        (currentMovementZ+(((targetZ-attackerZ) * 0.4)*knockbackstat))
                 );
             }
             target.hurtMarked = true;
 
-            double range = 2.0D;
-            AABB sweepingBox = target.getBoundingBox().inflate(range, 0.5D, range);
-            List<LivingEntity> nearbyEntities = attacker.getCommandSenderWorld().getEntitiesOfClass(LivingEntity.class, sweepingBox);
-
-            float damage = (float) (getScytheDamageModifier(stack) + 1.0D);
-            float sweepDamage = damage * 0.5f; // Sweeping targets take 50% of base damage
-
-            for (LivingEntity entity : nearbyEntities) {
-                if (entity != attacker && entity != target && !attacker.isAlliedTo(entity)) {
-
-                    entity.knockback(-0.4F,
-                            Math.sin(attacker.getYRot() * (Math.PI / 180F)),
-                            -Math.cos(attacker.getYRot() * (Math.PI / 180F))
-                    );
-
-                    entity.hurt(attacker.damageSources().playerAttack((net.minecraft.world.entity.player.Player) attacker), sweepDamage);
-                }
-            }
-
-            // --- Handle Weapon Durability ---
             if (attacker instanceof ServerPlayer serverPlayer) {
                 stack.hurtAndBreak(1, serverPlayer, net.minecraft.world.entity.EquipmentSlot.MAINHAND);
             }

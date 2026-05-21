@@ -1,12 +1,13 @@
 {
-  "itemGroup.gloop": "Example Mod Tab",
+  "itemGroup.gloop": "Gloop",
+
   "gloop.configuration.title": "Gloop Configs",
   "gloop.configuration.section.gloop.common.toml": "Gloop Configs",
   "gloop.configuration.section.gloop.common.toml.title": "Gloop Configs",
-  "gloop.configuration.items": "Item List",
-  "gloop.configuration.logDirtBlock": "Log Dirt Block",
-  "gloop.configuration.magicNumberIntroduction": "Magic Number Text",
-  "gloop.configuration.magicNumber": "Magic Number",
+  "gloop.configuration.general": "server",
+  "gloop.configuration.magicmirrorcooldowntime":"Magic Mirror tick after using mirror",
+  "gloop.configuration.Hitmagicmirrorcooldowntime":"Magic Mirror tick after hit",
+
 
   "item.gloop.magic_mirror": "Magic Mirror",
 
@@ -17,9 +18,8 @@
   "item.gloop.diamond_scythe":  "Diamond Scythe",
   "item.gloop.netherite_scythe":  "Netherite Scythe",
 
-
-
   "enchantment.gloop.acceleration":"Acceleration",
-  "enchantment.gloop.acceleration.desc": "When a tool with this enchantment mines the same block as the last block mined it accelerates"
-
+  "enchantment.gloop.acceleration.desc": "When a tool with this enchantment mines the same block as the last block mined it accelerates",
+  "enchantment.gloop.backstab":"BackStab",
+  "enchantment.gloop.backstab.desc":"FIX ME PLEASE I DONT WANT TO HAVE A BLANK DISCRIPTIOn"
 }

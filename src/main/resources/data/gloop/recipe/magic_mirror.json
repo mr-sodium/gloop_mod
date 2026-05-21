@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "N": {
+      "tag": "c:ingots/iron"
+    },
+    "a": {
+      "tag": "c:gems/diamond"
+    },
+    "C": {
+      "tag": "c:gems/amethyst"
+    }
+  },
+  "pattern": [
+    " N ",
+    "NaN",
+    "CN "
+  ],
+  "result": {
+    "id": "gloop:magic_mirror"
+  }
+}

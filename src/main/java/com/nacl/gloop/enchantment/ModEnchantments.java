@@ -10,4 +10,8 @@ public class ModEnchantments {
             Registries.ENCHANTMENT,
             ResourceLocation.fromNamespaceAndPath("gloop", "acceleration")
     );
+    public static final ResourceKey<Enchantment> BACKSTAB = ResourceKey.create(
+            Registries.ENCHANTMENT,
+            ResourceLocation.fromNamespaceAndPath("gloop", "backstab")
+    );
 }

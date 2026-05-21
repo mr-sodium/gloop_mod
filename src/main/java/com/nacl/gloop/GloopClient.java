@@ -24,8 +24,5 @@ public class GloopClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        // Some client setup code
-        Gloop.LOGGER.info("HELLO FROM CLIENT SETUP");
-        Gloop.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
 }
