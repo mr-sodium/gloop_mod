@@ -1,4 +1,4 @@
-package com.nacl.gloop.Items;
+package com.nacl.gloop.Item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;

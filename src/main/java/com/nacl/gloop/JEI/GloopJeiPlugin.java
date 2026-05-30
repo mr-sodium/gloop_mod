@@ -1,7 +1,8 @@
 package com.nacl.gloop.JEI;
 
 import com.nacl.gloop.Gloop;
-import com.nacl.gloop.Items.ModItems;
+import com.nacl.gloop.Item.ModItems;
+
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;

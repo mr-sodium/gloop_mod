@@ -1,4 +1,4 @@
-package com.nacl.gloop.Items;
+package com.nacl.gloop.Item;
 
 import com.nacl.gloop.Gloop;
 //import com.nacl.gloop.block.ModBlocks;

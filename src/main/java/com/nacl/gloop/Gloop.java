@@ -1,6 +1,5 @@
 package com.nacl.gloop;
 
-import com.nacl.gloop.Items.ModItems;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -8,6 +7,8 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
+import com.nacl.gloop.Item.ModItems;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.IEventBus;

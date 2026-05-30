@@ -1,4 +1,4 @@
-package com.nacl.gloop.Items;
+package com.nacl.gloop.Item;
 
 import com.nacl.gloop.Config;
 import net.minecraft.core.BlockPos;
@@ -48,7 +48,7 @@ public class MagicMirrorItem extends Item {
                     if (targetLevel != null) {
                         Vec3 actualSpawnPos = null;
 
-// 1. Check for valid bed/anchor placement and obstructions using stable 1.21.1 block-checking logic
+                        // 1. Check for valid bed/anchor placement and obstructions using stable 1.21.1 block-checking logic
                         if (bedPos != null) {
                             // Get the state of the block at the player's saved spawn point
                             net.minecraft.world.level.block.state.BlockState blockState = targetLevel.getBlockState(bedPos);
