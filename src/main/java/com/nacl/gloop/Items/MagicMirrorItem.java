@@ -18,9 +18,9 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.phys.Vec3;
 import java.util.Optional;
 
-public class MagicMirrorItemClass extends Item {
+public class MagicMirrorItem extends Item {
 
-    public MagicMirrorItemClass(Properties properties) {
+    public MagicMirrorItem(Properties properties) {
         super(properties);
     }
 

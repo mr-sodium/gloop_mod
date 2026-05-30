@@ -24,7 +24,7 @@ import java.util.List;
 import static net.minecraft.world.entity.ai.attributes.Attributes.BLOCK_INTERACTION_RANGE;
 import static net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE;
 
-public class DaggerItemClass extends Item {
+public class DaggerItem extends Item {
 
     private static final ResourceLocation ATTACK_RANGE_MODIFIER_ID = ResourceLocation.fromNamespaceAndPath("gloop", "scythe_range");
     private static final ResourceLocation ATTACK_DAMAGE_MODIFIER_ID = ResourceLocation.fromNamespaceAndPath("gloop", "dagger_damage");
@@ -32,7 +32,7 @@ public class DaggerItemClass extends Item {
     private static final ResourceLocation BLOCK_INTERACTION_RANGE_ID = ResourceLocation.fromNamespaceAndPath("gloop", "scythe_range");
 
 
-    public DaggerItemClass(Properties properties) {
+    public DaggerItem(Properties properties) {
         super(properties.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY.withTooltip(false)));
     }
 
@@ -105,17 +105,17 @@ public class DaggerItemClass extends Item {
     public double getDaggerDamageModifier(ItemStack stack) {
         Item item = stack.getItem();
 
-        if (item == ModItems.Wooden_dagger.get()) {
+        if (item == ModItems.WOODEN_DAGGER.get()) {
             return 2.5D;
-        } else if (item == ModItems.Stone_dagger.get()) {
+        } else if (item == ModItems.STONE_DAGGER.get()) {
             return 3.0D;
-        } else if (item == ModItems.Iron_dagger.get()) {
+        } else if (item == ModItems.IRON_DAGGER.get()) {
             return 5.0D;
-        } else if (item == ModItems.Golden_dagger.get()) {
+        } else if (item == ModItems.GOLDEN_DAGGER.get()) {
             return 3.0D;
-        } else if (item == ModItems.Diamond_dagger.get()) {
+        } else if (item == ModItems.DIAMOND_DAGGER.get()) {
             return 5.0D;
-        } else if (item == ModItems.Netherite_dagger.get()) {
+        } else if (item == ModItems.NETHERITE_DAGGER.get()) {
             return 6.0D;
         }
         return 0.0D;

@@ -6,18 +6,9 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.neoforged.fml.common.Mod;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @JeiPlugin
 public class GloopJeiPlugin implements IModPlugin {
@@ -32,62 +23,73 @@ public class GloopJeiPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         // Adding an info page to a Diamond
         registration.addIngredientInfo(
-                new ItemStack(ModItems.wooden_scythe.get()),
+                new ItemStack(ModItems.WOODEN_SCYTHE.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.scythe_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.stone_scythe.get()),
+                new ItemStack(ModItems.STONE_SCYTHE.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.scythe_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.iron_scythe.get()),
+                new ItemStack(ModItems.IRON_SCYTHE.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.scythe_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.golden_scythe.get()),
+                new ItemStack(ModItems.GOLDEN_SCYTHE.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.scythe_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.diamond_scythe.get()),
+                new ItemStack(ModItems.DIAMOND_SCYTHE.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.scythe_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.netherite_scythe.get()),
+                new ItemStack(ModItems.NETHERITE_SCYTHE.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.scythe_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.Wooden_dagger.get()),
+                new ItemStack(ModItems.WOODEN_DAGGER.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.dagger_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.Stone_dagger.get()),
+                new ItemStack(ModItems.STONE_DAGGER.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.dagger_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.Iron_dagger.get()),
+                new ItemStack(ModItems.IRON_DAGGER.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.dagger_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.Golden_dagger.get()),
+                new ItemStack(ModItems.GOLDEN_DAGGER.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.dagger_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.Diamond_dagger.get()),
+                new ItemStack(ModItems.DIAMOND_DAGGER.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.dagger_description")
         );
+
         registration.addIngredientInfo(
-                new ItemStack(ModItems.Netherite_dagger.get()),
+                new ItemStack(ModItems.NETHERITE_DAGGER.get()),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.gloop.dagger_description")
         );

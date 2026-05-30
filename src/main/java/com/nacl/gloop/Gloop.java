@@ -1,7 +1,6 @@
 package com.nacl.gloop;
 
 import com.nacl.gloop.Items.ModItems;
-//import com.nacl.gloop.block.ModBlocks;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -36,26 +35,26 @@ public class Gloop {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.gloop"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> ModItems.Magic_mirror.get().getDefaultInstance())
+            .icon(() -> ModItems.MAGIC_MIRROR.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-//                output.accept(ModItems.TuffMachineCasingBlock.get());
+            //output.accept(ModItems.TuffMachineCasingBlock.get());
 
                 // Items
                 output.accept(ModItems.GLOOP.get());
                 output.accept(ModItems.PASTE.get());
-                output.accept(ModItems.Magic_mirror.get());
-                output.accept(ModItems.wooden_scythe.get());
-                output.accept(ModItems.stone_scythe.get());
-                output.accept(ModItems.iron_scythe.get());
-                output.accept(ModItems.golden_scythe.get());
-                output.accept(ModItems.diamond_scythe.get());
-                output.accept(ModItems.netherite_scythe.get());
-                output.accept(ModItems.Wooden_dagger.get());
-                output.accept(ModItems.Stone_dagger.get());
-                output.accept(ModItems.Iron_dagger.get());
-                output.accept(ModItems.Golden_dagger.get());
-                output.accept(ModItems.Diamond_dagger.get());
-                output.accept(ModItems.Netherite_dagger.get());
+                output.accept(ModItems.MAGIC_MIRROR.get());
+                output.accept(ModItems.WOODEN_SCYTHE.get());
+                output.accept(ModItems.STONE_SCYTHE.get());
+                output.accept(ModItems.IRON_SCYTHE.get());
+                output.accept(ModItems.GOLDEN_SCYTHE.get());
+                output.accept(ModItems.DIAMOND_SCYTHE.get());
+                output.accept(ModItems.NETHERITE_SCYTHE.get());
+                output.accept(ModItems.WOODEN_DAGGER.get());
+                output.accept(ModItems.STONE_DAGGER.get());
+                output.accept(ModItems.IRON_DAGGER.get());
+                output.accept(ModItems.GOLDEN_DAGGER.get());
+                output.accept(ModItems.DIAMOND_DAGGER.get());
+                output.accept(ModItems.NETHERITE_DAGGER.get());
 
                 // Enchantments setup
                 var enchantmentLookup = parameters.holders().lookupOrThrow(Registries.ENCHANTMENT);
@@ -81,7 +80,6 @@ public class Gloop {
         modEventBus.addListener(this::commonSetup);
 
         // 1. CRITICAL: Register Blocks and Items FIRST so the Creative Tab can safely read them
-//        ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
 
         // 2. Register the Creative Tabs registry to the bus last
@@ -99,25 +97,27 @@ public class Gloop {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.insertAfter(
                     Items.WARPED_FUNGUS_ON_A_STICK.getDefaultInstance(),
-                    ModItems.Magic_mirror.get().getDefaultInstance(),
+                    ModItems.MAGIC_MIRROR.get().getDefaultInstance(),
                     CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
             );
         }
+        
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            event.insertAfter(Items.NETHERITE_AXE.getDefaultInstance(), ModItems.wooden_scythe.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.wooden_scythe.get().getDefaultInstance(), ModItems.stone_scythe.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.stone_scythe.get().getDefaultInstance(), ModItems.iron_scythe.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.iron_scythe.get().getDefaultInstance(), ModItems.golden_scythe.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.golden_scythe.get().getDefaultInstance(), ModItems.diamond_scythe.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.diamond_scythe.get().getDefaultInstance(), ModItems.netherite_scythe.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.NETHERITE_AXE.getDefaultInstance(), ModItems.WOODEN_SCYTHE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.WOODEN_SCYTHE.get().getDefaultInstance(), ModItems.STONE_SCYTHE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STONE_SCYTHE.get().getDefaultInstance(), ModItems.IRON_SCYTHE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.IRON_SCYTHE.get().getDefaultInstance(), ModItems.GOLDEN_SCYTHE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GOLDEN_SCYTHE.get().getDefaultInstance(), ModItems.DIAMOND_SCYTHE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DIAMOND_SCYTHE.get().getDefaultInstance(), ModItems.NETHERITE_SCYTHE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
-            event.insertAfter(Items.NETHERITE_SWORD.getDefaultInstance(), ModItems.Wooden_dagger.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.Wooden_dagger.get().getDefaultInstance(), ModItems.Stone_dagger.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.Stone_dagger.get().getDefaultInstance(), ModItems.Iron_dagger.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.Iron_dagger.get().getDefaultInstance(), ModItems.Golden_dagger.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.Golden_dagger.get().getDefaultInstance(), ModItems.Diamond_dagger.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModItems.Diamond_dagger.get().getDefaultInstance(), ModItems.Netherite_dagger.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.NETHERITE_SWORD.getDefaultInstance(), ModItems.WOODEN_DAGGER.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.WOODEN_DAGGER.get().getDefaultInstance(), ModItems.STONE_DAGGER.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.STONE_DAGGER.get().getDefaultInstance(), ModItems.IRON_DAGGER.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.IRON_DAGGER.get().getDefaultInstance(), ModItems.GOLDEN_DAGGER.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.GOLDEN_DAGGER.get().getDefaultInstance(), ModItems.DIAMOND_DAGGER.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModItems.DIAMOND_DAGGER.get().getDefaultInstance(), ModItems.NETHERITE_DAGGER.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
+
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.insertAfter(Items.SLIME_BALL.getDefaultInstance(), ModItems.GLOOP.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GLOOP.get().getDefaultInstance(), ModItems.PASTE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

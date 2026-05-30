@@ -26,8 +26,7 @@ import java.util.List;
 
 import static net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE;
 
-public class ScytheItemClass extends Item {
-
+public class ScytheItem extends Item {
 
     private static final ResourceLocation ATTACK_RANGE_MODIFIER_ID = ResourceLocation.fromNamespaceAndPath("gloop", "scythe_range");
     private static final ResourceLocation ATTACK_DAMAGE_MODIFIER_ID = ResourceLocation.fromNamespaceAndPath("gloop", "scythe_damage");
@@ -35,7 +34,7 @@ public class ScytheItemClass extends Item {
     private static final ResourceLocation BLOCK_INTERACTION_RANGE_ID = ResourceLocation.fromNamespaceAndPath("gloop", "scythe_range");
 
 
-    public ScytheItemClass(Properties properties) {
+    public ScytheItem(Properties properties) {
         super(properties.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY.withTooltip(false)));
     }
 
@@ -48,15 +47,15 @@ public class ScytheItemClass extends Item {
     private int getScytheToolLevel(ItemStack stack) {
         Item item = stack.getItem();
 
-        if (item == ModItems.wooden_scythe.get() || item == ModItems.golden_scythe.get()) {
+        if (item == ModItems.WOODEN_SCYTHE.get() || item == ModItems.GOLDEN_SCYTHE.get()) {
             return 0;
-        } else if (item == ModItems.stone_scythe.get()) {
+        } else if (item == ModItems.STONE_SCYTHE.get()) {
             return 1;
-        } else if (item == ModItems.iron_scythe.get()) {
+        } else if (item == ModItems.IRON_SCYTHE.get()) {
             return 2;
-        } else if (item == ModItems.diamond_scythe.get()) {
+        } else if (item == ModItems.DIAMOND_SCYTHE.get()) {
             return 3;
-        } else if (item == ModItems.netherite_scythe.get()) {
+        } else if (item == ModItems.NETHERITE_SCYTHE.get()) {
             return 4;
         }
         return 0;
@@ -175,17 +174,17 @@ public class ScytheItemClass extends Item {
     private double getScytheDamageModifier(ItemStack stack) {
         Item item = stack.getItem();
 
-        if (item == ModItems.wooden_scythe.get()) {
+        if (item == ModItems.WOODEN_SCYTHE.get()) {
             return 2.0D;
-        } else if (item == ModItems.stone_scythe.get()) {
+        } else if (item == ModItems.STONE_SCYTHE.get()) {
             return 3.0D;
-        } else if (item == ModItems.iron_scythe.get()) {
+        } else if (item == ModItems.IRON_SCYTHE.get()) {
             return 5.0D;
-        } else if (item == ModItems.golden_scythe.get()) {
+        } else if (item == ModItems.GOLDEN_SCYTHE.get()) {
             return 3.0D;
-        } else if (item == ModItems.diamond_scythe.get()) {
+        } else if (item == ModItems.DIAMOND_SCYTHE.get()) {
             return 5.0D;
-        } else if (item == ModItems.netherite_scythe.get()) {
+        } else if (item == ModItems.NETHERITE_SCYTHE.get()) {
             return 6.0D;
         }
 
