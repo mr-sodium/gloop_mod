@@ -1,15 +1,11 @@
 package com.nacl.gloop.Item;
 
 import com.nacl.gloop.Gloop;
-//import com.nacl.gloop.block.ModBlocks;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.minecraft.world.level.block.Block;
-import java.util.function.Supplier;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Gloop.MODID);
@@ -68,10 +64,6 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     // Helper method changed to accept a Supplier<Block> directly (like a DeferredBlock)
-    private static <T extends Block> DeferredItem<BlockItem> registerBlockItem(String name, Supplier<T> blockSupplier) {
-        return ITEMS.register(name, () -> new BlockItem(blockSupplier.get(), new Item.Properties()));
-    }
-
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

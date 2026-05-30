@@ -29,6 +29,7 @@
   "item.gloop.netherite_dagger":  "Netherite Dagger",
   "jei.gloop.dagger_description": "Has lower range than a sword. When another dagger of the same material is in the other hand damage is increased. Supports BackStabing.",
 
+  "block.gloop.tuff_machine_casing":  "Tuff Machine Casing",
 
   "enchantment.gloop.acceleration":"Acceleration",
   "enchantment.gloop.acceleration.desc": "When a tool with this enchantment mines the same block as the last block mined it accelerates",

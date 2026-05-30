@@ -8,6 +8,7 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import com.nacl.gloop.Item.ModItems;
+import com.nacl.gloop.block.ModBlocks;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -38,7 +39,6 @@ public class Gloop {
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> ModItems.MAGIC_MIRROR.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-            //output.accept(ModItems.TuffMachineCasingBlock.get());
 
                 // Items
                 output.accept(ModItems.GLOOP.get());
@@ -56,6 +56,7 @@ public class Gloop {
                 output.accept(ModItems.GOLDEN_DAGGER.get());
                 output.accept(ModItems.DIAMOND_DAGGER.get());
                 output.accept(ModItems.NETHERITE_DAGGER.get());
+                output.accept(ModBlocks.TUFF_MACHINE_CASING.get());
 
                 // Enchantments setup
                 var enchantmentLookup = parameters.holders().lookupOrThrow(Registries.ENCHANTMENT);
@@ -82,6 +83,7 @@ public class Gloop {
 
         // 1. CRITICAL: Register Blocks and Items FIRST so the Creative Tab can safely read them
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // 2. Register the Creative Tabs registry to the bus last
         CREATIVE_MODE_TABS.register(modEventBus);
