@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "tag": "c:dyes/light_gray"
+    },
+    {
+      "item": "gloop:hoof"
+    }
+  ],
+  "result": {
+    "id": "gloop:paste"
+  }
+}

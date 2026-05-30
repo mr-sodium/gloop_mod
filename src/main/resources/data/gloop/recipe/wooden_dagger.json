@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "N": {
+      "tag": "minecraft:planks"
+    },
+    "a": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    " N",
+    "a "
+  ],
+  "result": {
+    "id": "gloop:wooden_dagger"
+  }
+}

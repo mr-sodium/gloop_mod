@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "tag": "c:slimeballs"
+    },
+    {
+      "tag": "c:ender_pearls"
+    },
+    {
+      "tag": "c:buckets/milk"
+    }
+  ],
+  "result": {
+    "id": "gloop:gloop"
+  }
+}

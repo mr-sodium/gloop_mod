@@ -10,6 +10,8 @@
 
 
   "item.gloop.magic_mirror": "Magic Mirror",
+  "item.gloop.gloop": "Gloop",
+  "item.gloop.paste": "Paste",
 
   "item.gloop.wooden_scythe":  "Wooden Scythe",
   "item.gloop.stone_scythe":  "Stone Scythe",
@@ -17,9 +19,19 @@
   "item.gloop.golden_scythe":  "Golden scythe",
   "item.gloop.diamond_scythe":  "Diamond Scythe",
   "item.gloop.netherite_scythe":  "Netherite Scythe",
+  "jei.gloop.scythe_description": "this is a test",
+
+  "item.gloop.wooden_dagger":  "Wooden Dagger",
+  "item.gloop.stone_dagger":  "Stone Dagger",
+  "item.gloop.iron_dagger":  "Iron Dagger",
+  "item.gloop.golden_dagger":  "Golden Dagger",
+  "item.gloop.diamond_dagger":  "Diamond Dagger",
+  "item.gloop.netherite_dagger":  "Netherite Dagger",
+  "jei.gloop.dagger_description": "Has lower range than a sword. When another dagger of the same material is in the other hand damage is increased. Supports BackStabing.",
+
 
   "enchantment.gloop.acceleration":"Acceleration",
   "enchantment.gloop.acceleration.desc": "When a tool with this enchantment mines the same block as the last block mined it accelerates",
   "enchantment.gloop.backstab":"BackStab",
-  "enchantment.gloop.backstab.desc":"FIX ME PLEASE I DONT WANT TO HAVE A BLANK DISCRIPTIOn"
+  "enchantment.gloop.backstab.desc":"When the enemy is facing away;This enchantment makes the tools it can go on deal extra damage"
 }

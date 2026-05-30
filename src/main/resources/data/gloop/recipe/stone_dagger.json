@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "N": {
+      "tag": "minecraft:stone_crafting_materials"
+    },
+    "a": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    " N",
+    "a "
+  ],
+  "result": {
+    "id": "gloop:stone_dagger"
+  }
+}
