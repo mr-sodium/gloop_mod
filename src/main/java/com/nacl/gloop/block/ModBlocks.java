@@ -14,19 +14,23 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Supplier;
 
 public class ModBlocks {
-   public static final DeferredRegister.Blocks BLOCKS =
-           DeferredRegister.createBlocks(Gloop.MODID);
+    public static final DeferredRegister.Blocks BLOCKS =
+            DeferredRegister.createBlocks(Gloop.MODID);
 
-   public static final DeferredBlock<Block> TUFF_MACHINE_CASING = registerBlock("tuff_machine_casing",
-    () -> new Block(BlockBehaviour.Properties.of()
-        .noOcclusion()
-        .strength(4f)
-    ));
-//    public static final DeferredBlock<Block> ANTICOMPARATOR = registerBlock("anti_comparator",
-//            () -> new AntiComparator(BlockBehaviour.Properties.of()
-//                    .strength(0.4f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> TUFF_MACHINE_CASING = registerBlock("tuff_machine_casing",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .strength(4f)
+            ));
 
-   private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
+    // Updated to use CoalGasBlock and added .noCollision()
+    public static final DeferredBlock<CoalGasBlock> COAL_GAS = registerBlock("coal_gas",
+            () -> new CoalGasBlock(BlockBehaviour.Properties.of()
+                    .noOcclusion() // Stops it from hiding blocks behind it
+                    .noCollission()
+            ));
+
+    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
         return toReturn;

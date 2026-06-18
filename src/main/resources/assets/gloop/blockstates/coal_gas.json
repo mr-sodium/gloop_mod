@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "gas_level=0": { "model": "gloop:block/coal_gas_0" },
+    "gas_level=1": { "model": "gloop:block/coal_gas_1" },
+    "gas_level=2": { "model": "gloop:block/coal_gas_2" },
+    "gas_level=3": { "model": "gloop:block/coal_gas_3" }
+  }
+}
