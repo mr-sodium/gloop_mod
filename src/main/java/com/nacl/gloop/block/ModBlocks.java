@@ -6,7 +6,11 @@ import com.nacl.gloop.Item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -28,6 +32,15 @@ public class ModBlocks {
             () -> new CoalGasBlock(BlockBehaviour.Properties.of()
                     .noOcclusion() // Stops it from hiding blocks behind it
                     .noCollission()
+            ));
+
+
+    public static final DeferredBlock<SlabBlock> MUD_SLAB = registerBlock("mud_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT)
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(1.0F, 2.0F)
+                    .sound(SoundType.MUD)
             ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {

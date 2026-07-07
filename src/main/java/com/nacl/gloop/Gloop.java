@@ -37,7 +37,7 @@ public class Gloop {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.gloop"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> ModItems.MAGIC_MIRROR.get().getDefaultInstance())
+            .icon(() -> ModItems.GLOOP.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
 
                 // Items
@@ -77,6 +77,7 @@ public class Gloop {
                 enchantedBook.set(DataComponents.STORED_ENCHANTMENTS, builder.toImmutable());
                 output.accept(enchantedBook);
             }).build());
+
 
     public Gloop(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);

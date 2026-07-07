@@ -1,6 +1,7 @@
 {
   "values": [
     "minecraft:efficiency",
+    "gloop:ground_burst",
     "gloop:acceleration"
   ]
 }

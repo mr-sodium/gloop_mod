@@ -14,4 +14,9 @@ public class ModEnchantments {
             Registries.ENCHANTMENT,
             ResourceLocation.fromNamespaceAndPath("gloop", "backstab")
     );
+    public static final ResourceKey<Enchantment> GROUNDBURST = ResourceKey.create(
+            Registries.ENCHANTMENT,
+            ResourceLocation.fromNamespaceAndPath("gloop", "ground_burst")
+    );
+
 }

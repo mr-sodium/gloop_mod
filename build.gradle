@@ -19,7 +19,29 @@ sourceSets.main.resources {
 }
 
 repositories {
-    exclusiveContent { // Sable
+    // CurseForge Maven for reliable NeoForge dependencies
+    maven {
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+
+    // Modrinth Maven
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+
+    // Sable & Sable Companion repositories
+    exclusiveContent {
         forRepository {
             maven {
                 url = "https://maven.ryanhcode.dev/releases"
@@ -94,7 +116,7 @@ configurations {
 }
 
 dependencies {
-    // Your Sable Companion JarJar configuration
+    // Sable Companion JarJar configuration
     jarJar(api("dev.ryanhcode.sable-companion:sable-companion-common-${project.minecraft_version}:[${project.sable_companion_version},)")) {
         version {
             prefer project.sable_companion_version
@@ -105,6 +127,9 @@ dependencies {
     compileOnly "mezz.jei:jei-1.21.1-common-api:19.27.0.340"
     compileOnly "mezz.jei:jei-1.21.1-neoforge-api:19.27.0.340"
     runtimeOnly "mezz.jei:jei-1.21.1-neoforge:19.27.0.340"
+
+    // TerraBlender variant for NeoForge 1.21.1
+    implementation "curse.maven:terrablender-neoforge-940057:6054947"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

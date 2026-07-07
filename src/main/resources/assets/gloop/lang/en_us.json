@@ -34,5 +34,7 @@
   "enchantment.gloop.acceleration":"Acceleration",
   "enchantment.gloop.acceleration.desc": "When a tool with this enchantment mines the same block as the last block mined it accelerates",
   "enchantment.gloop.backstab":"BackStab",
-  "enchantment.gloop.backstab.desc":"When the enemy is facing away;This enchantment makes the tools it can go on deal extra damage"
+  "enchantment.gloop.backstab.desc":"When the enemy is facing away;This enchantment makes the tools it can go on deal extra damage",
+  "enchantment.gloop.ground_burst":"Ground Burst",
+  "enchantment.gloop.ground_burst.desc":"TEST"
 }
