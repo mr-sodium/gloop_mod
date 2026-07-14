@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "N": {
+      "item": "minecraft:packed_mud"
+    }
+  },
+  "pattern": [
+    "NNN"
+  ],
+  "result": {
+    "id": "gloop:packed_mud_slab",
+    "count": 6
+  }
+}

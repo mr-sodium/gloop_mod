@@ -12,11 +12,16 @@ import com.nacl.gloop.block.ModBlocks;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -57,6 +62,8 @@ public class Gloop {
                 output.accept(ModItems.DIAMOND_DAGGER.get());
                 output.accept(ModItems.NETHERITE_DAGGER.get());
                 output.accept(ModBlocks.TUFF_MACHINE_CASING.get());
+                output.accept(ModBlocks.GLOOP_BLOCK.get());
+
 
                 // Enchantments setup
                 var enchantmentLookup = parameters.holders().lookupOrThrow(Registries.ENCHANTMENT);
@@ -69,6 +76,14 @@ public class Gloop {
                     enchantedBook.set(DataComponents.STORED_ENCHANTMENTS, builder.toImmutable());
                     output.accept(enchantedBook);
                 }
+                for (int level = 1; level <= 10; level++) {
+                    var blockburst = enchantmentLookup.getOrThrow(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MODID, "ground_burst")));
+                    ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
+                    ItemEnchantments.Mutable builder = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
+                    builder.set(blockburst, level);
+                    enchantedBook.set(DataComponents.STORED_ENCHANTMENTS, builder.toImmutable());
+                    output.accept(enchantedBook);
+                }
 
                 var backStabEnchantment = enchantmentLookup.getOrThrow(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MODID, "backstab")));
                 ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
@@ -76,6 +91,7 @@ public class Gloop {
                 builder.set(backStabEnchantment, 1);
                 enchantedBook.set(DataComponents.STORED_ENCHANTMENTS, builder.toImmutable());
                 output.accept(enchantedBook);
+
             }).build());
 
 
@@ -105,7 +121,7 @@ public class Gloop {
                     CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
             );
         }
-        
+
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.insertAfter(Items.NETHERITE_AXE.getDefaultInstance(), ModItems.WOODEN_SCYTHE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.WOODEN_SCYTHE.get().getDefaultInstance(), ModItems.STONE_SCYTHE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -122,15 +138,41 @@ public class Gloop {
             event.insertAfter(ModItems.DIAMOND_DAGGER.get().getDefaultInstance(), ModItems.NETHERITE_DAGGER.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
 
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS){
+            event.insertAfter(//this is mud slab
+                    Items.MUD.getDefaultInstance(),
+                    ModBlocks.MUD_SLAB.get().asItem().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
+            event.insertAfter(//this is packed mud slab,
+                    Items.PACKED_MUD.getDefaultInstance(),
+                    ModBlocks.PACKED_MUD_SLAB.get().asItem().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+        }
+
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.insertAfter(Items.SLIME_BALL.getDefaultInstance(), ModItems.GLOOP.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.GLOOP.get().getDefaultInstance(), ModItems.PASTE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.PASTE.get().getDefaultInstance(), ModItems.HOOF.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-
         }
     }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+    }
+
+    // Nested class that explicitly handles client-side setups safely
+    @EventBusSubscriber(modid = Gloop.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                ItemBlockRenderTypes.setRenderLayer(ModBlocks.GLOOP_BLOCK.get(), RenderType.translucent());
+            });
+        }
     }
 }

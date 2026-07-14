@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gloop:block/gloop_block"
+    }
+  }
+}

@@ -19,7 +19,7 @@
   "item.gloop.golden_scythe":  "Golden scythe",
   "item.gloop.diamond_scythe":  "Diamond Scythe",
   "item.gloop.netherite_scythe":  "Netherite Scythe",
-  "jei.gloop.scythe_description": "this is a test",
+  "jei.gloop.scythe_description": "Has higher attack range but deal less damage per second than an axe or sword, pulls opponents to user, supports back stab.",
 
   "item.gloop.wooden_dagger":  "Wooden Dagger",
   "item.gloop.stone_dagger":  "Stone Dagger",
@@ -29,12 +29,14 @@
   "item.gloop.netherite_dagger":  "Netherite Dagger",
   "jei.gloop.dagger_description": "Has lower range than a sword. When another dagger of the same material is in the other hand damage is increased. Supports BackStabing.",
 
-  "block.gloop.tuff_machine_casing":  "Tuff Machine Casing",
+  "block.gloop.tuff_machine_casing":  "Tuff Machine Casing[WIP]",
+  "block.gloop.mud_slab": "Mud Slab",
+  "block.gloop.packed_mud_slab": "Packed Mud Slab",
 
   "enchantment.gloop.acceleration":"Acceleration",
   "enchantment.gloop.acceleration.desc": "When a tool with this enchantment mines the same block as the last block mined it accelerates",
   "enchantment.gloop.backstab":"BackStab",
-  "enchantment.gloop.backstab.desc":"When the enemy is facing away;This enchantment makes the tools it can go on deal extra damage",
-  "enchantment.gloop.ground_burst":"Ground Burst",
-  "enchantment.gloop.ground_burst.desc":"TEST"
+  "enchantment.gloop.backstab.desc":"When the enemy is facing away; This enchantment makes the tools it can go on deal extra damage",
+  "enchantment.gloop.blockburst":"Ground Burst",
+  "enchantment.gloop.blockburst.desc":"Block burst make a small explosion occasionally on mined blocks; further more higher levels of Ground burst make bigger explosions."
 }

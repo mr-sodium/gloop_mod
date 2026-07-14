@@ -21,6 +21,7 @@ public class GloopClient {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 
+
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
     }

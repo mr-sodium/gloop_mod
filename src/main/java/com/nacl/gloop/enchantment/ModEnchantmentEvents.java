@@ -82,7 +82,7 @@ public class ModEnchantmentEvents {
         if (player == null || player.level().isClientSide()) return;
 
         ItemStack tool = player.getMainHandItem();
-        Level level = (Level) event.getLevel(); // Cast event level to World Level
+        Level level = (Level) event.getLevel();
 
         var enchantmentRegistry = player.level().registryAccess().lookup(Registries.ENCHANTMENT).orElse(null);
         if (enchantmentRegistry == null) return;
@@ -100,6 +100,8 @@ public class ModEnchantmentEvents {
                     float explosionRadius = 0.5f + (groundBurstLevel * 2.0f);
 
                     if (level instanceof ServerLevel serverLevel) {
+                        // CHANGED: Use ExplosionInteraction.TNT instead of BLOCK.
+                        // TNT interaction guarantees a 100% drop rate for all destroyed blocks.
                         serverLevel.explode(
                                 player,
                                 event.getPos().getX() + 0.5,
@@ -107,7 +109,7 @@ public class ModEnchantmentEvents {
                                 event.getPos().getZ() + 0.5,
                                 explosionRadius,
                                 false,
-                                Level.ExplosionInteraction.BLOCK
+                                Level.ExplosionInteraction.TNT
                         );
                     }
                 }

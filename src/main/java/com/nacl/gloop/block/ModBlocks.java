@@ -23,15 +23,22 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> TUFF_MACHINE_CASING = registerBlock("tuff_machine_casing",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .noOcclusion()
                     .strength(4f)
+            ));
+    public static final DeferredBlock<Block> GLOOP_BLOCK = registerBlock("gloop_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(0.01f)
+                    .sound(SoundType.SLIME_BLOCK)
+                    .instabreak()
+                    .noOcclusion()
             ));
 
     // Updated to use CoalGasBlock and added .noCollision()
     public static final DeferredBlock<CoalGasBlock> COAL_GAS = registerBlock("coal_gas",
             () -> new CoalGasBlock(BlockBehaviour.Properties.of()
-                    .noOcclusion() // Stops it from hiding blocks behind it
+                    .noOcclusion()
                     .noCollission()
+                    .mapColor(MapColor.COLOR_PINK)
             ));
 
 
@@ -42,6 +49,13 @@ public class ModBlocks {
                     .strength(1.0F, 2.0F)
                     .sound(SoundType.MUD)
             ));
+    public static final DeferredBlock<SlabBlock> PACKED_MUD_SLAB = registerBlock("packed_mud_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .strength(1.0F, 2.0F)
+                    .sound(SoundType.PACKED_MUD)
+            ));
+
+
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
